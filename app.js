@@ -14,7 +14,10 @@ app.use( express.static('public'))
 // });
 app.get('/', (req, res) => {
   //Para renderizar con hbs tenemso que hacer lo siguiente
-  res.render('home')
+  res.render('home',{
+    name:"adrian",
+    study:"programacion"
+  })
 });
 
 app.get('/elements', (req, res) => {
