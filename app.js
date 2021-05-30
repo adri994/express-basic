@@ -1,9 +1,17 @@
+//bUSCAR ALS VARIABLES DE ENTORNO DE LA CARPETA .ENV
+require('dotenv').config()
 const express = require('express')
+var hbs = require('hbs');
 
 const app = express()
+//buscar la info que este en el archivo
+const port = process.env.PORT
+//Despues de esto tengo que crear un comando en el package.json
 
 //Handlebars sirve para enviar el html desde el backend y se renderice y lo muestre, ojo donde este las vista tiene que ser en views (crear una carpeta views)
 app.set('view engine', 'hbs');
+//handlbar
+hbs.registerPartials(__dirname + '/views/partials');
 
 app.use( express.static('public'))
 
@@ -20,15 +28,23 @@ app.get('/', (req, res) => {
   })
 });
 
-app.get('/elements', (req, res) => {
-  res.sendFile(__dirname + '/public/elements.html')
-});
+// app.get('/elements', (req, res) => {
+//   res.sendFile(__dirname + '/public/elements.html')
+// });
 
-app.get('/generic', (req, res) => {
-  res.sendFile(__dirname + '/public/generic.html')
-});
+app.get('/elements',(req,res)=>{
+  res.render('elements')
+})
 
-app.listen(3000)
+// app.get('/generic', (req, res) => {
+//   res.sendFile(__dirname + '/public/generic.html')
+// });
+
+app.get('/generic',(req,res)=>{
+  res.render('generic')
+})
+
+app.listen(port)
 
 
 // //servir contenido estatico este tendra para inicializar la pagina
