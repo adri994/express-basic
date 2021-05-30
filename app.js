@@ -9,9 +9,9 @@ const port = process.env.PORT
 //Despues de esto tengo que crear un comando en el package.json
 
 //Handlebars sirve para enviar el html desde el backend y se renderice y lo muestre, ojo donde este las vista tiene que ser en views (crear una carpeta views)
-app.set('view engine', 'hbs');
+//app.set('view engine', 'hbs');
 //handlbar
-hbs.registerPartials(__dirname + '/views/partials');
+//hbs.registerPartials(__dirname + '/views/partials');
 
 app.use( express.static('public'))
 
@@ -20,29 +20,33 @@ app.use( express.static('public'))
 // app.get('/', (req, res) => {
 //   res.sendFile(__dirname + '/public/index.html')
 // });
-app.get('/', (req, res) => {
-  //Para renderizar con hbs tenemso que hacer lo siguiente
-  res.render('home',{
-    name:"adrian",
-    study:"programacion"
-  })
-});
+// app.get('/', (req, res) => {
+//   //Para renderizar con hbs tenemso que hacer lo siguiente
+//   res.render('home',{
+//     name:"adrian",
+//     study:"programacion"
+//   })
+// });
 
 // app.get('/elements', (req, res) => {
 //   res.sendFile(__dirname + '/public/elements.html')
 // });
 
-app.get('/elements',(req,res)=>{
-  res.render('elements')
-})
+// app.get('/elements',(req,res)=>{
+//   res.render('elements')
+// })
 
 // app.get('/generic', (req, res) => {
 //   res.sendFile(__dirname + '/public/generic.html')
 // });
 
-app.get('/generic',(req,res)=>{
-  res.render('generic')
-})
+// app.get('/generic',(req,res)=>{
+//   res.render('generic')
+// })
+
+app.get('*', (req, res) => {
+  res.sendFile(__dirname + '/public/index.html')
+});
 
 app.listen(port)
 
